@@ -102,4 +102,28 @@ if segundo not in lista:
     print( str(nm))
 '''
 
+'''
+#Se leerán los valores de todas las posiciones de la lista
+milista = ['Montaña', 'Valle', 'Río', 'Cordillera', 'Meseta', 'Colina', 'Pradera' ]
+for i in milista:
+    print ("El valor de la posición es: ", i)
+for k, x in enumerate(milista):
+    print("milista[", k, "] =", x)
+'''
 
+'''
+#Se leerán los valores de un rango de posiciones de la lista
+milista = ['Montaña', 'Valle', 'Río', 'Cordillera', 'Meseta', 'Colina', 'Pradera' ]
+for i in range(2, 4): #Se mostrarán los valores de las posiciones 2 y 3
+    print ("El valor de la posición es ", milista[i])
+print("-----------------")
+for i in range(len(milista)): #Se mostrarán los valores de todas las posiciones
+    print ("El valor de la posición es ", milista[i])
+print("-----------------")
+print ("El número de posiciones de la lista es: ", len(milista))
+for i in range(len(milista) - 3): #Se mostrarán los valores de las primeras posiciones
+    print ("El valor de la posición es ", milista[i])
+print("-----------------")  
+for i in range(3, len(milista)): #Se mostrarán los valores de las últimas posiciones
+    print ("El valor de la posición es ", milista[i])
+'''
