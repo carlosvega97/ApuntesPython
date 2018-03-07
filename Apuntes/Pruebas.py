@@ -24,7 +24,7 @@ try:
     print ("Conectado!\n")
 except:
     print ("No se puede conectar con la Base de Datos")
-cur.execute("DROP TABLE IF EXISTS alumnos")
+cur.execute("DROP TABLE IF EXISTS alumnos") 
 print("La tabla alumnos se ha eliminado")
 cur.execute("DROP TABLE IF EXISTS deportes")
 print("La tabla deportes se ha eliminado")

@@ -28,7 +28,7 @@ print("Conexión a la Base de Datos Postgres")
 #Se usa try para poder capturar las excepciones producidas durante la conexión
 try:
     # Se realiza la conexión con la base de datos postgres
-    conx = psycopg2.connect("dbname=postgres user=openpg password=openpgpwd")
+    conx = psycopg2.connect("dbname=Pruebas user=postgres password=root")
     print("Estableciendo conexión a la base de datos ...")
     #conx.cursor devuelve un objeto cursor necesario para realizar las consultas SQL
     cur = conx.cursor()
@@ -51,10 +51,6 @@ try:
     cur.execute("INSERT INTO prueba (nombre, sueldo) VALUES (%s, %s)",("Luis Bermúdez", 1650))
     cur.execute("INSERT INTO prueba (nombre, sueldo) VALUES (%s, %s)",("Ana Palomo", 1590))
     #Se inserta una tupla más de otra manera
-    cur.execute(
-        """INSERT INTO prueba (nombre, sueldo)
-    VALUES (%s, %s);""",
-    ("Lola Otero", 1700))
     #Se realiza una consulta para comprobar si se han introducido dichas tuplas
     cur.execute("SELECT * FROM prueba")
     tuplas=cur.fetchall()
