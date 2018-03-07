@@ -25,14 +25,11 @@ print ("versión de PostgreSQL\n", version)
     #Se ejecutan una serie de consultas o queries
     #Si existe la tabla prueba se borrará para evitar excepciones al ejecutar el código de nuevo
 cur.execute("DROP TABLE IF EXISTS Excursion")
+
 print("La tabla prueba se ha eliminado")
     #Se crea una tabla nueva llamada prueba con un campo que será clave primaria
 cur.execute("CREATE TABLE Excursion (id serial PRIMARY KEY, localizacion varchar, objetos varchar)")
     #Se insertan algunas tuplas en la tabla. La última se inserta de otra forma
-cur.execute("INSERT INTO Excursion (localizacion, objetos) VALUES (%s, %s)",("Monte Abantos", "Mochila"))
-cur.execute("INSERT INTO Excursion (localizacion, objetos) VALUES (%s, %s)",("La Pedriza", "Linterna"))
-cur.execute("INSERT INTO Excursion (localizacion, objetos) VALUES (%s, %s)",("Las dehesas de Cercedilla", "GPS"))
-cur.execute("INSERT INTO Excursion (localizacion, objetos) VALUES (%s, %s)",("La Cabrera-Pico de la Miel", "Mapa"))
 '''
 cur.execute("SELECT * FROM Excursion")
 tuplas=cur.fetchall()
@@ -124,6 +121,7 @@ lista.place(x = 80,y = 400)
      
      
 def Guardado():
+    '''
     lista.insert(END,("Nombre:",nombre.get(),apellidos.get()))
     lista.insert(END,("Excursion:",select.get()))
     lista.insert(END,("Direccion:",direccion.get()))
@@ -131,12 +129,17 @@ def Guardado():
     lista.insert(END,("Telefono:",telefono.get()))
     lista.insert(END,("Accesorios:",select1.get(),select2.get(),select3.get(),select4.get(),select5.get(),select6.get(),select7.get(),select8.get()))
     lista.insert(END,())
-    
+    '''
     messagebox.showinfo("Titulo: Enhorabuena", "Sus datos ha sido guardados")
-     
+    localizacion = select.get()
+    objetos = select1.get(), select2.get(),select3.get(),select4.get(),select5.get(),select6.get(),select7.get(),select8.get()
+    cur.execute("INSERT INTO Excursion (localizacion, objetos) VALUES (%s, %s)",(localizacion, objetos))
      
 boton1 = Button(ventana, text = 'Guardar datos', command = Guardado).place(x = 365, y = 345)
 ventana.mainloop()
+conx.commit() #Confirmar cambios y hacerlos permanentes
+cur.close() #Se cierra el cursor
+conx.close()
 
 
 
